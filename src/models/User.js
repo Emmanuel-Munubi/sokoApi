@@ -1,5 +1,8 @@
 const { DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
 const sequelize = require("../config/db");
+
+// Define the User model
 const User = sequelize.define(
   "User",
   {
@@ -46,9 +49,19 @@ const User = sequelize.define(
   }
 );
 
-module.exports = User;
+const hashPasswordHook = async (user) => {
+  if (user.changed("password")) {
+    const hashedPassword = await bcrypt.hash(user.password, 10); // Hash the password with a salt round of 10
+    user.password = hashedPassword;
+  }
+};
 
-//sync the model with the database
+User.beforeCreate(hashPasswordHook);
+User.beforeUpdate(hashPasswordHook);
+
+// Sync the model with the database
 User.sync({ force: false }).then(() => {
-  console.log("User table created");
+  console.log("User table synchronized with the database");
 });
+
+module.exports = User;

@@ -1,8 +1,8 @@
 {
-  "name": "sokoApi",
+  "name": "soko-api",
   "version": "1.0.0",
   "description": "NodeJs backend for Soko App",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/Pendiam/SokoAPI",
   "author": "Peter Arnold <peter.arnold254@gmail.com>",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-     "sequelize": "^6.37.1",
+    "sequelize": "^6.37.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

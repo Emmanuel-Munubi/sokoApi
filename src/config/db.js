@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 // Database connection
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "./data.sqlite",
+  storage: "./sokoDB.sqlite",
   logging: console.log, // For debugging
 });
 
